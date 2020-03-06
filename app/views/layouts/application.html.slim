@@ -24,6 +24,10 @@ html
         = link_to "Ask Question" , new_question_path(), class: 'question'
         |&nbsp;|&nbsp;
         = link_to "Questions" , home_questions_path(), class: 'question'
+        |&nbsp;|&nbsp;
+        = link_to "Answers" , answers_path(), class: 'anwsers'
+        |&nbsp;|&nbsp;
+        = link_to "Topics" , topics_path(), class: 'topics'
 
         - flash.each do |key, value|  
           - if key == 'notice'
