@@ -20,10 +20,10 @@ table
           = question.user.email
         td[style='verticle-align: top'] 
           - question.topics.each do |topic|
-            = link_to "follow #{topic.content}" , "" , class: 'follow_topic'
+            = link_to "follow #{topic.content}" , follow_topic_path(topic) , class: 'follow_topic'
             ||&nbsp;
             br
         td[style='verticle-align: top'] 
           = link_to "Answer This question" , new_answer_path(question_id: question.id)
           ||&nbsp;
-          = link_to "Follow #{question.user.email}" , "" , class: 'follow_user'
+          = link_to "Follow #{question.user.email}" , follow_user_path(question.user.id) , class: 'follow_user'
