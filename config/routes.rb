@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get 'home/index'
+  get 'question/:question_id' => 'home#question', as: :home_question
+
   resources :topics
   resources :answers
   resources :questions do 
