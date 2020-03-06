@@ -9,4 +9,7 @@
   .field
     = f.label :content,  "Please Put your Question here"
     = f.rich_text_area :content
+
+    = label_tag :topic,  "AddTopic"
+    = text_field_tag :topic
   .actions = f.submit

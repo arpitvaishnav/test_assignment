@@ -1,25 +1,2 @@
-h1 Listing questions
-
-table
-  thead
-    tr
-      th Content
-      th User
-      th
-      th
-      th
-
-  tbody
-    - @questions.each do |question|
-      tr
-        td[style='verticle-align: top'] 
-          == question.content
-          = link_to "Total Answers (#{question.answers.count})", home_question_path(question)
-        td[style='verticle-align: top'] 
-          = question.user.email
-        td[style='verticle-align: top'] 
-          = link_to "Answer This question" , new_question_answer_path(question)
-
-br
 
 

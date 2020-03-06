@@ -1,12 +1,19 @@
 class HomeController < ApplicationController
 
   def index
-    @questions = Question.includes(:answers).all
+    
+  end
+
+  def questions
+    @questions = Question.all
   end
 
   def question
-    @question = Question.includes(:answers).where(params[:question_id]).first
+    @question = Question.where(id: params[:question_id]).first
   end
 
+  def topics
+    @topics = Topic.all
+  end
 
 end

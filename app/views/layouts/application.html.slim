@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Qoura
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' 
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' 
+  
+  body
+    h1 Qoura
+
+    #content
+      p 
+        = link_to "Ask Question" , new_question_path(), class: 'question'
+        |&nbsp; 
+        = link_to "Questions" , home_questions_path(), class: 'question'
+
+      -if user_signed_in?
+        br
+        = link_to('Logout', destroy_user_session_path, method: :delete)       
+      -else
+        br
+        = link_to('Login', new_user_session_path) 
+    == yield
+
+    div id="footer"
+      | Copyright &copy;
+

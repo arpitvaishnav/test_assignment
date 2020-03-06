@@ -27,8 +27,12 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.new(question_params)
 
+     
     respond_to do |format|
       if @question.save
+        Topic.setup_topics(current_user, params[:topic], @question)
+        
+        
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else

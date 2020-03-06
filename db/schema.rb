@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_091954) do
+ActiveRecord::Schema.define(version: 2020_03_06_112201) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,23 @@ ActiveRecord::Schema.define(version: 2020_03_06_091954) do
     t.text "content"
     t.bigint "user_id"
     t.bigint "question_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "followings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followed_id"
+    t.string "followable_type"
+    t.bigint "followable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followable_type", "followable_id"], name: "index_followings_on_followable_type_and_followable_id"
+  end
+
+  create_table "question_topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "question_id"
+    t.bigint "topic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

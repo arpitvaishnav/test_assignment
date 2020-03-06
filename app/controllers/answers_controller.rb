@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @question = Question.find_by(params[:question_id])
+    @question = Question.find_by(id: params[:question_id])
     if @question.present?
       @answer = current_user.answers.new(question_id: @question.id)
     else
@@ -31,7 +31,7 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = current_user.answers.new(answer_params)
-
+    @question = Question.find_by(id: answer_params[:question_id])
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
