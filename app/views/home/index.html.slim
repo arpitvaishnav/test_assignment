@@ -1,0 +1,21 @@
+h1 Listing questions
+
+table
+  thead
+    tr
+      th Content
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @questions.each do |question|
+      tr
+        td == question.content
+        td = question.user.email
+        td = link_to "Answer This question" , new_question_answer_path(question)
+
+br
+
+
