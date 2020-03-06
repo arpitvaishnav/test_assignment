@@ -9,7 +9,13 @@ html
   
   body
     h1 Qoura
-
+    - flash.each do |key, value|  
+      - if key == 'notice'
+        #bold 
+          = value
+      - else
+        #error_explanation
+          = value
     #content
       p   
         -if user_signed_in?
@@ -28,14 +34,6 @@ html
         = link_to "Answers" , answers_path(), class: 'anwsers'
         |&nbsp;|&nbsp;
         = link_to "Topics" , topics_path(), class: 'topics'
-
-        - flash.each do |key, value|  
-          - if key == 'notice'
-            #bold 
-              = value
-          - if key == 'error'
-            #error_explanation
-              = value
       == yield
 
     div id="footer"
